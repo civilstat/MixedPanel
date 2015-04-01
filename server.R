@@ -76,7 +76,7 @@ shinyServer(function(input, output) {
   })
   
   output$footnoteText <- renderUI({
-    HTML("(Calculations are based on the hypergeometric distribution, as in <a href='http://stats.stackexchange.com/questions/11836/probability-of-panel-assignment'>this StackExchange example</a>.)")
+    HTML("(Calculations are based on the hypergeometric distribution, as in <a href='http://stats.stackexchange.com/questions/11836/probability-of-panel-assignment'>this StackExchange example</a>.<br/>Code available <a href='https://github.com/civilstat/MixedPanel'>on Github</a>.)")
   })
   
 })
