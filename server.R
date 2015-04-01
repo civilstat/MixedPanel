@@ -9,16 +9,16 @@ shinyServer(function(input, output) {
                 paste("Number of", input$subgroup, "candidates:"), 
                 min = 0, 
                 max = input$Ntotal, 
-                value = 8)
+                value = min(8, input$Ntotal))
   })
   
   # Slider input for panel size
   output$Npanel <- renderUI({
     sliderInput("Npanel", 
                 "Size of panel:", 
-                min = 0, 
+                min = 1, 
                 max = input$Ntotal, 
-                value = 5)
+                value = min(5, input$Ntotal))
   })
   
   # Slider input for nr women whose prob to evaluate
@@ -51,27 +51,27 @@ shinyServer(function(input, output) {
             ylab = "Probability (%)",
             border = thisBorder)
   })
-    
+  
   output$probText <- renderUI({
     strNchosen <- ifelse(input$Nchosen[1] == input$Nchosen[2],
                          input$Nchosen[1],
                          paste(input$Nchosen[1], "to", input$Nchosen[2]))
     HTML(
-    paste0("Let's say you started with <b>",
-           input$Ntotal,
-           "</b> candidates, of whom <b>",
-           input$Nwomen,
-           "</b> were ",
-           input$subgroup,
-           ", and you randomly chose a panel of <b>",
-           input$Npanel,
-           "</b> people from this candidate pool.<br/>The probability that your panel has <b>",
-           strNchosen, "</b> ",
-           input$subgroup,
-           " members would be about <b>",
-           round(sum(100*thisDhyper(input$Nchosen[1]:input$Nchosen[2])),
-                 1),
-           "%</b>.")
+      paste0("Let's say you started with <b>",
+             input$Ntotal,
+             "</b> candidates, of whom <b>",
+             input$Nwomen,
+             "</b> were ",
+             input$subgroup,
+             ", and you randomly chose a panel of <b>",
+             input$Npanel,
+             "</b> people from this candidate pool.<br/>The probability that your panel has <b>",
+             strNchosen, "</b> ",
+             input$subgroup,
+             " members would be about <b>",
+             round(sum(100*thisDhyper(input$Nchosen[1]:input$Nchosen[2])),
+                   1),
+             "%</b>.")
     )
   })
   
