@@ -13,7 +13,7 @@ shinyUI(pageWithSidebar(
     # Slider input for total number of people
     sliderInput("Ntotal", 
                 "Total number of candidates:", 
-                min = 0, 
+                min = 1, 
                 max = 50, 
                 value = 20),
     
