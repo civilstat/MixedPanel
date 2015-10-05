@@ -15,7 +15,8 @@ shinyUI(pageWithSidebar(
                 "Total number of candidates:", 
                 min = 1, 
                 max = 50, 
-                value = 20),
+                value = 20,
+                step = 1),
     
     # Slider input for number of women
     uiOutput("Nwomen"),
