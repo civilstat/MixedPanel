@@ -9,7 +9,8 @@ shinyServer(function(input, output) {
                 paste("Number of", input$subgroup, "candidates:"), 
                 min = 0, 
                 max = input$Ntotal, 
-                value = min(8, input$Ntotal))
+                value = min(8, input$Ntotal),
+                step = 1)
   })
   
   # Slider input for panel size
@@ -18,7 +19,8 @@ shinyServer(function(input, output) {
                 "Size of panel:", 
                 min = 1, 
                 max = input$Ntotal, 
-                value = min(5, input$Ntotal))
+                value = min(5, input$Ntotal),
+                step = 1)
   })
   
   # Slider input for nr women whose prob to evaluate
@@ -27,7 +29,8 @@ shinyServer(function(input, output) {
                 paste("Number of", input$subgroup, "panelists whose probability we want to evaluate:"),
                 min = 0, 
                 max = min(input$Npanel, input$Nwomen),
-                value = c(0,0))
+                value = c(0,0),
+                step = 1)
   })
   
   # Specify the hypergeometric distribution from the inputs
